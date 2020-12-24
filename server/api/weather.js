@@ -37,7 +37,7 @@ class Weather {
    * @param {string} data Weather data to save/update
    * @return {JSON} The data response from the weather api data.
    */
-  saveWeatherDataToMongo = async (zipCode, data) => {
+  saveWeatherData = async (zipCode, data) => {
     const filter = {
       zip_code: zipCode
     }
@@ -56,7 +56,7 @@ class Weather {
    * @param {number} zipCode The zipcode used as unique identifier to find the document from mongo
    * @return {JSON} The data response from the mongodb.
    */
-  getWeatherDataFromMongo = async (zipCode) => {
+  getWeatherDataByZipCode = async (zipCode) => {
     return WEATHER.findOne({ zip_code: zipCode });
   }
 

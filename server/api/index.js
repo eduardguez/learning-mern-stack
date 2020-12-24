@@ -26,7 +26,7 @@ router.post("/save_weather", async (request, response) => {
   let weather = new Weather();
   let weatherData = await weather.getWeatherData(zipCode, tempMetric);
 
-  await weather.saveWeatherDataToMongo(zipCode, weatherData);
+  await weather.saveWeatherData(zipCode, weatherData);
   response.header("Content-Type", "application/json");
   response.send(JSON.stringify(weatherData, null, 4));
 });
@@ -35,7 +35,7 @@ router.get("/weather_by_zipcode", async (request, response) => {
   const { zipCode } = request.query;
   let weather = new Weather();
 
-  let weatherData = await weather.getWeatherDataFromMongo(zipCode);
+  let weatherData = await weather.getWeatherDataByZipCode(zipCode);
   response.header("Content-Type", "application/json");
   response.send(JSON.stringify(weatherData, null, 4));
 });
