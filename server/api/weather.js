@@ -50,6 +50,16 @@ class Weather {
     await this.findOneReplace(filter, replace);
   }
 
+  /**
+   * Get Weather data from MongoDB by zipcode
+   *
+   * @param {number} zipCode The zipcode used as unique identifier to find the document from mongo
+   * @return {JSON} The data response from the mongodb.
+   */
+  getWeatherDataFromMongo = async (zipCode) => {
+    return WEATHER.findOne({ zip_code: zipCode });
+  }
+
 }
 
 module.exports = Weather;
